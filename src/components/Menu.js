@@ -3,11 +3,14 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Home from "./Home";
 import Events from "./Events";
+import { Alert } from "react-bootstrap";
+import ChatsHistory from "./ChatsHistory";
+import Contact from "./Contact";
 
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = { tmp: false };
+    this.state = { tmp: false, showAlert: false };
     // this.handleContact = this.handleContact.bind(this);
 
     // Binding methods in the constructor ensures that this refers to the component instance when the method is called as an event handler.
@@ -20,31 +23,44 @@ class Menu extends Component {
   }
   handleContact = () => {
     this.setState({ tmp: true });
+    setTimeout(() => {
+      this.setState({ showAlert: true });
+    }, 1000);
   };
   render() {
-    const Contact = this.state.tmp ? (
+    const ContactTab = this.state.tmp ? (
       <Tab eventKey="contact" title="Contact">
-        Tab content for Contact
+        <Contact />
       </Tab>
     ) : null;
     return (
-      <Tabs
-        defaultActiveKey="profile"
-        id="fill-tab-example"
-        className="mb-3 bg-dark"
-        fill
-      >
-        <Tab eventKey="home" title="Home">
-          <Home />
-        </Tab>
-        <Tab eventKey="profile" title="Events">
-          <Events onContactClick={this.handleContact} />
-        </Tab>
-        <Tab eventKey="longer-tab" title="Loooonger Tab">
-          Tab content for Loooonger Tab
-        </Tab>
-        {Contact}
-      </Tabs>
+      <div>
+        <Tabs
+          defaultActiveKey="home"
+          id="fill-tab-example"
+          className="mb-3 bg-dark"
+          fill
+        >
+          <Tab eventKey="home" title="Home">
+            <Home />
+          </Tab>
+          <Tab eventKey="profile" title="Events">
+            <Events onContactClick={this.handleContact} />
+            {this.state.showAlert && (
+              <Alert
+                variant="success"
+                style={{ width: "350px", margin: "10px auto", height: "auto" }}
+              >
+                well done 'Contact' is avaible now
+              </Alert>
+            )}
+          </Tab>
+          <Tab eventKey="chats-history" title="Chats History">
+            <ChatsHistory />
+          </Tab>
+          {ContactTab}
+        </Tabs>
+      </div>
     );
   }
 }

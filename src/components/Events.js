@@ -7,12 +7,18 @@ class Events extends Component {
     this.state = {
       eventIndex: 0,
       code: "",
+      code1: "",
+      code2: "",
+      code3: "",
       solution: "",
     };
   }
 
   handleCodeChange = (e) => {
     this.setState({ code: e.target.value });
+    this.setState({ code1: e.target.value });
+    this.setState({ code2: e.target.value });
+    this.setState({ code3: e.target.value });
   };
 
   handleSolutionChange = (e) => {
@@ -35,44 +41,43 @@ class Events extends Component {
     {
       title: "Événement 1 : L'Infiltration",
       description:
-        "Vous avez réussi à infiltrer la première couche de sécurité du site de Shadow Coders. Maintenant, vous devez déchiffrer un code caché dans le code source de la page d'accueil.",
+        "Vous avez réussi à infiltrer la première couche de sécurité. " +
+        "Maintenant, vous devez trouver un code, nous supposons qu'il est caché dans le code source de la page, regardait en dessous de la classe 'App'.",
       inputLabel: "Entrez le code",
       inputName: "code",
-      validation: (state) => state.code === "1", // Exemple de code correct
+      validation: (state) => state.code === "1", // Exemple de code correct 190106000007
     },
     {
-      title: "Événement 2 : La Salle des Pièges",
+      title: "Événement 2 : Nom du Projet",
       description:
-        "Vous avez pénétré dans la salle des pièges. Plusieurs fichiers cachés contiennent des indices, mais certains d'entre eux sont des leurres.",
-      inputLabel: "Entrez les informations trouvées",
-      inputName: "solution",
-      validation: (state) => state.solution === "2", // Exemple de solution correcte
+        "Vous avez pénétré dans la salle des pièges. Nous avons besoins du nom du projet.",
+      inputLabel: "Entrez l'information trouvée",
+      inputName: "code",
+      validation: (state) => state.code1 === "2", // Exemple de solution correcte FalconHead
     },
     {
       title: "Événement 3 : Le Serveur Sécurisé",
       description:
-        "Vous avez accès à un serveur sécurisé. Pour obtenir les coordonnées des personnes clés, vous devez résoudre une énigme complexe.",
-      inputLabel: "Entrez la solution de l'énigme",
-      inputName: "solution",
-      validation: (state) => state.solution === "3", // Exemple de réponse correcte
-    },
-    {
-      title: "Événement 4 : Le Mot de Passe Final",
-      description:
-        "Vous avez rassemblé suffisamment d'informations pour deviner le mot de passe final.",
-      inputLabel: "Entrez le mot de passe",
+        "Vous avez accès à un serveur sécurisé. Pour obtenir les coordonnées des personnes clés, vous devez trouver le nom et prénom de la 10e personne de l'organisme.",
+      inputLabel: "Entrez le nom et prénom",
       inputName: "code",
-      validation: (state) => state.code === "4", // Exemple de mot de passe correct
+      validation: (state) => state.code2 === "3", // Exemple de réponse correcte Mathis Derbov
     },
     {
-      title: "congrats",
-      description:
-        "Vous avez rassemblé suffisamment d'informations pour deviner le mot de passe final.",
+      title: "Événement 4 : Final",
+      description: "Par quelle moyen l'organisme se deplace",
+      inputLabel: "Entrez l'information trouvée",
+      inputName: "code",
+      validation: (state) => state.code3 === "4" || state.code3 === "bateau", // Exemple de mot de passe correct Bateau
+    },
+    {
+      title: "Bien joué",
+      description: "Vous avez résolue toute les évenements.",
     },
   ];
 
   render() {
-    const { eventIndex, code, solution } = this.state;
+    const { eventIndex, code, solution, code1 } = this.state;
     const currentEvent = this.events[eventIndex];
     const EventBtn =
       eventIndex === 4 ? (
@@ -87,7 +92,7 @@ class Events extends Component {
           type="submit"
           disabled={!currentEvent.validation(this.state)}
         >
-          Suivant
+          Envoyer
         </Button>
       );
 
@@ -95,7 +100,7 @@ class Events extends Component {
       eventIndex === 4 ? null : (
         <Form.Control
           type="text"
-          value={currentEvent.inputName === "code" ? code : solution}
+          value={currentEvent.inputName === "code" ? code || code1 : solution}
           onChange={
             currentEvent.inputName === "code"
               ? this.handleCodeChange
@@ -107,7 +112,14 @@ class Events extends Component {
       );
 
     return (
-      <Card>
+      <Card
+        style={{
+          width: "90%",
+          margin: "30px auto",
+          border: "1px solid black",
+          borderRadius: "20px",
+        }}
+      >
         <Card.Body>
           <Card.Title>{currentEvent.title}</Card.Title>
           <Card.Text>{currentEvent.description}</Card.Text>
