@@ -90,7 +90,7 @@ class ChatsHistory extends Component {
           }}
         >
           <ListGroupItem>
-            <strong>froachel:</strong> Hi Mathis, do you know the 1st of the
+            <strong>froachel:</strong> Hi Eleanora, do you know the 1st of the
             organization? 🚗
           </ListGroupItem>
           {comments.map((comment) => (
@@ -114,13 +114,13 @@ class ChatsHistory extends Component {
             </ListGroupItem>
           ))}
           <ListGroupItem>
-            <strong>Ankle:</strong> No, Mathis Derbov ✈️
+            <strong>Ankle:</strong> No, Eleanora Price ✈️
           </ListGroupItem>
           <ListGroupItem>
-            <strong>Bobus :</strong> FalconHead ?
+            <strong>Bobus:</strong> FalconHead ?
           </ListGroupItem>
           <ListGroupItem>
-            <strong>RamsesII:</strong> No, but I know the 8 others who are in
+            <strong>nloiterton8:</strong> No, but I know the 8 others who are in
             front of me 🚢
           </ListGroupItem>
           {comments3.map((comment) => (
@@ -129,7 +129,7 @@ class ChatsHistory extends Component {
             </ListGroupItem>
           ))}
           <ListGroupItem>
-            <strong>Jeufof0:</strong> Mathis Der Bremer? ✈️
+            <strong>Jeufof0:</strong> Demetrius Van Bremer? ✈️
           </ListGroupItem>
         </ListGroup>
       </div>

@@ -61,7 +61,7 @@ class Events extends Component {
         "Vous avez accès à un serveur sécurisé. Pour obtenir les coordonnées des personnes clés, vous devez trouver le nom et prénom de la 10e personne de l'organisme.",
       inputLabel: "Entrez le nom et prénom",
       inputName: "code",
-      validation: (state) => state.code2 === "3", // Exemple de réponse correcte Mathis Derbov
+      validation: (state) => state.code2 === "3", // Exemple de réponse correcte Demetrius Corkery
     },
     {
       title: "Événement 4 : Final",
@@ -125,7 +125,9 @@ class Events extends Component {
           <Card.Text>{currentEvent.description}</Card.Text>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="eventInput">
-              <Form.Label>{currentEvent.inputLabel}</Form.Label>
+              <Form.Label style={{ margin: "10px auto" }}>
+                {currentEvent.inputLabel}
+              </Form.Label>
               {EventInputBtn}
             </Form.Group>
             {EventBtn}
