@@ -12,7 +12,7 @@ Clonez ce dépôt :
 git clone https://github.com/6LLOYD/hacker_boy.git
 
 Accédez au répertoire du projet :
-cd hacker-boy
+cd hacker_boy
 
 Lancez l'application :
 npm start
