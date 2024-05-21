@@ -9,13 +9,10 @@ Installation
 Pour installer et exécuter ce projet localement, suivez les étapes ci-dessous :
 
 Clonez ce dépôt :
-git clone https://github.com/votre-utilisateur/hacker-boy.git
+git clone https://github.com/6LLOYD/hacker_boy.git
 
 Accédez au répertoire du projet :
 cd hacker-boy
-
-Installez les dépendances :
-npm install
 
 Lancez l'application :
 npm start
